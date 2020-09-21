@@ -42,19 +42,10 @@ class App extends Component {
   togglePersonsHandler= () => {
     this.setState({showPersons:!this.state.showPersons})
   };
-
+// render ------------------------------------------------------------
   render() {
-    const style = {
-      backgroundColor: 'white',
-      font: 'inherit',
-      border: '1px solid black',
-      padding: '8px',
-      borderRadius: '5px',
-      cursor: 'pointer'
-    }
 
     let persons = null;
-
     if (this.state.showPersons) {
       persons = (
         <div>
@@ -67,23 +58,29 @@ class App extends Component {
               changed={(event) => this.nameChangedHandler(event, person.id)} />
           })}
         </div>
-      )
+      );
+    }
+
+    const classes = [];
+    if(this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if(this.state.persons.length <= 1) {
+      classes.push('bold');
     }
 
     return (
       <div className="App">
          <h1>Hi, I'am a React App</h1>
-         <h1>Hi there</h1>
+         <h1 className={classes.join(' ')}>Hi there</h1>
          {/*Arrow functions can be inefficient*/}
-         <button onClick={this.togglePersonsHandler}
-           style={style}
+         <button className={this.state.showPersons ? 'buttonRed' : 'button'} onClick={this.togglePersonsHandler}
            >Show Persons</button>
          {persons}
       </div>
     );
   }
-
-  // return React.createElement('div', {className:'App'}, React.createElement('h1',null, 'Hi, I\'am a React App '))
 }
 
 export default App;
+// export default Radium(App);

@@ -1,3 +1,36 @@
 .App {
   text-align: center;
 }
+
+.red {
+  color: red;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.button{
+  background-color: rgba(40, 162, 109, 0.79);
+  color: white;
+  font: inherit;
+  border: 2px solid #088c19;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: rgba(80, 182, 140, 0.79);
+}
+.buttonRed{
+  background-color: rgba(128, 35, 49, 0.81);
+  color: white;
+  font: inherit;
+  border: 2px solid #8c0717;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.buttonRed:hover {
+  background-color: rgba(149, 60, 73, 0.81);
+}
