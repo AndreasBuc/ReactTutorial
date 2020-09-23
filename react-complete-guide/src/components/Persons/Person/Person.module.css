@@ -6,9 +6,16 @@
   box-shadow: 0 2px 3px #ccc;
   padding: 16px;
   text-align: center;
+  border-radius: 15px;
+  cursor: 'pointer';
 }
-@media (min-width: 600px) {
+.Person:hover {
+  box-shadow: 0 4px 5px #ccc;
+
+}
+
+@media (min-width: 900px) {
     .Person{
-      width: 450px;
+      width: 540px;
     }
 }
