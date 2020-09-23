@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './Cockpit.module.css'
 
-const cockpick = (props) => {
+const Cockpick = (props) => {
+  useEffect(()=> {
+    console.log('[Cockpit.js] useEffect')
+  });
 
   const assignedclasses = [];
   if(props.persons.length <= 2) {
@@ -13,12 +16,21 @@ const cockpick = (props) => {
 
   return (
     <div className={classes.Cockpit}>
-      <h1>Hi, I'am a React App</h1>
+      <h1>{props.title}</h1>
       <h1 className={assignedclasses.join(' ')}>Hi there</h1>
-      <button className={props.showPersons ? classes.buttonRed : classes.button} onClick={props.toggle}
-        >Show Persons</button>
+      <button className={props.showPersons ? classes.buttonRed : classes.buttonGrenn} onClick={props.toggle}
+        >Show Persons
+      </button>
+      <button className="btn btn-ouline-dark"
+        onClick={() => {props.add({
+          id:props.persons.length +1,
+          name:'Susi',
+          age:30
+        })}}>
+        Add Person
+      </button>
     </div>
   )
 };
 
-export default cockpick;
+export default Cockpick;

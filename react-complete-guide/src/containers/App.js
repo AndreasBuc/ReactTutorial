@@ -4,14 +4,33 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit'
 
 class App extends Component {
+  constructor(props) {
+    super (props);
+    console.log('[App.js] constructor');
+  }
+
   state = {
     persons: [
       {id: 1, name: 'Max', age: 29},
       {id: 2, name: 'Michale', age: 30},
       {id: 3, name: 'Marie', age: 28},
+      {id: 4, name: 'Tom', age: 34},
   ],
   showPersons: false,
   }
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps');
+    console.log(props);
+    return state
+  }
+
+  addNewPerson = (person) => {
+    const persons = this.state.persons.slice();
+    persons.push(person);
+    this.setState({persons: persons});
+  }
+
 
   nameChangedHandler = ( event, id ) => {
     const personIndex = this.state.persons.findIndex(p => {
@@ -27,8 +46,6 @@ class App extends Component {
   }
 
   deletePersonHandler = (index) => {
-    // const persons = this.state.persons.slice();
-    // Alternative
     const persons = [...this.state.persons];
     persons.splice(index,1);
     this.setState({persons:persons});
@@ -39,7 +56,7 @@ class App extends Component {
   };
 // render ------------------------------------------------------------
   render() {
-
+    console.log('[App.js] render');
     let persons = null;
     if (this.state.showPersons) {
       persons = (
@@ -51,18 +68,38 @@ class App extends Component {
       );
     }
 
+    let cockpit = (
+      <Cockpit
+        persons={this.state.persons}
+        showPersons = {this.state.showPersons}
+        toggle = {this.togglePersonsHandler}
+        title= {this.props.appTitle}
+        add = { this.addNewPerson }
+        >
+      </Cockpit>
+    )
+
     return (
       <div className="App">
-        <Cockpit
-          persons={this.state.persons}
-          showPersons = {this.state.showPersons}
-          toggle = {this.togglePersonsHandler}
-          >
-        </Cockpit>
+        {cockpit}
         {persons}
       </div>
     );
   }
+
+  componentDidMount() {
+    console.log('[App.js] componentDidMount')
+  }
+
+  componentDidUpdate(){
+    console.log('[App.js] componentDidUpdate')
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    console.log('[App.js] shouldComponentUpdate')
+    return true;
+  }
+
 }
 
 export default App;
