@@ -4,11 +4,17 @@ import classes from './Cockpit.module.css'
 const Cockpick = (props) => {
   useEffect(()=> {
     console.log('[Cockpit.js] useEffect')
+    return () => {
+      console.log('[Cockpit.js] cleanup work in useEffect')
+    }
   }, []);
   // With an empty Array, this useEffect will only run once on creation!!
 
   useEffect(()=>{
-    console.log('[Cockpit.js] useEffect more then once')
+    console.log('[Cockpit.js] useEffect more then once');
+    return () => {
+      console.log('[Cockpit.js] cleanup work in 2nd useEffect')
+    }
   })
 
   const assignedclasses = [];
