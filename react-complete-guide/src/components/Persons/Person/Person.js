@@ -11,7 +11,7 @@ class Person extends Component {
           </p>
           <div className="d-flex justify-content-center">
             <input
-              className="form-control" 
+              className="form-control"
               type="text"
               value={this.props.name}
               onChange={this.props.changed}/>
