@@ -4,7 +4,12 @@ import classes from './Cockpit.module.css'
 const Cockpick = (props) => {
   useEffect(()=> {
     console.log('[Cockpit.js] useEffect')
-  });
+  }, []);
+  // With an empty Array, this useEffect will only run once on creation!!
+
+  useEffect(()=>{
+    console.log('[Cockpit.js] useEffect more then once')
+  })
 
   const assignedclasses = [];
   if(props.persons.length <= 2) {
