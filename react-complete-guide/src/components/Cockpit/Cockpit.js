@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import classes from './Cockpit.module.css'
 
 const Cockpick = (props) => {
+
+  const toggleBtnRef = useRef(null);
+
   useEffect(()=> {
     console.log('[Cockpit.js] useEffect')
     setTimeout(()=>{
-      // alert('timer')
+      toggleBtnRef.current.click();
     },1000);
+
     return () => {
       console.log('[Cockpit.js] cleanup work in useEffect')
     }
@@ -32,12 +36,15 @@ const Cockpick = (props) => {
     <div className={classes.Cockpit}>
       <h1>{props.title}</h1>
       <h1 className={assignedclasses.join(' ')}>Hi there</h1>
-      <button className={props.showPersons ? classes.buttonRed : classes.buttonGrenn} onClick={props.toggle}
+      <button
+        className={props.showPersons ? classes.buttonRed : classes.buttonGrenn}
+        onClick={props.toggle}
+        ref = {toggleBtnRef}
         >Show Persons
       </button>
       <button className="btn btn-ouline-dark"
         onClick={() => {props.add({
-          id:props.personsLength +1,
+          id:props.personsLength + 1,
           name:'Susi',
           age:30
         })}}>
