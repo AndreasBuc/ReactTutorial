@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Persons from '../components/Persons/Persons';
-import Cockpit from '../components/Cockpit/Cockpit'
+import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
   constructor(props) {
@@ -83,7 +83,7 @@ class App extends Component {
     }
     let button = (
       <button
-        className="btn btn-outline-dark"
+        className="btn btn-outline-dark mt-2"
         onClick={
           () => this.setState({showCockpit: !this.state.showCockpit})
         }
@@ -93,7 +93,7 @@ class App extends Component {
     )
 
     return (
-      <div className="App">
+      <div className='App'>
         {button}
         {cockpit}
         {persons}

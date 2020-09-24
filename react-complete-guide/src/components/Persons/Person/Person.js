@@ -5,7 +5,7 @@ class Person extends Component {
   render() {
     console.log('[Person.js] rendering...');
     return (
-        <div className={classes.Person}>
+        <React.Fragment className={classes.Person}>
           <p onClick={this.props.click}>
             My name is {this.props.name}. I am {this.props.age} years old!
           </p>
@@ -16,7 +16,7 @@ class Person extends Component {
               value={this.props.name}
               onChange={this.props.changed}/>
           </div>
-        </div>
+        </React.Fragment>
 
     )
   }
