@@ -81,18 +81,20 @@ class App extends Component {
         </Cockpit>
       )
     }
-
+    let button = (
+      <button
+        className="btn btn-outline-dark"
+        onClick={
+          () => this.setState({showCockpit: !this.state.showCockpit})
+        }
+        >
+        Toogle Cockpit
+      </button>
+    )
 
     return (
       <div className="App">
-        <button
-          className="btn btn-outline-dark"
-          onClick={
-            () => this.setState({showCockpit: !this.state.showCockpit})
-          }
-          >
-          Toogle Cockpit
-        </button>
+        {button}
         {cockpit}
         {persons}
       </div>

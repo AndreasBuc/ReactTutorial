@@ -4,6 +4,9 @@ import classes from './Cockpit.module.css'
 const Cockpick = (props) => {
   useEffect(()=> {
     console.log('[Cockpit.js] useEffect')
+    setTimeout(()=>{
+      // alert('timer')
+    },1000);
     return () => {
       console.log('[Cockpit.js] cleanup work in useEffect')
     }
@@ -18,10 +21,10 @@ const Cockpick = (props) => {
   })
 
   const assignedclasses = [];
-  if(props.persons.length <= 2) {
+  if(props.personsLength <= 2) {
     assignedclasses.push(classes.red);
   }
-  if(props.persons.length <= 1) {
+  if(props.personsLength <= 1) {
     assignedclasses.push(classes.bold);
   }
 
@@ -34,7 +37,7 @@ const Cockpick = (props) => {
       </button>
       <button className="btn btn-ouline-dark"
         onClick={() => {props.add({
-          id:props.persons.length +1,
+          id:props.personsLength +1,
           name:'Susi',
           age:30
         })}}>
@@ -44,4 +47,4 @@ const Cockpick = (props) => {
   )
 };
 
-export default Cockpick;
+export default React.memo(Cockpick);
