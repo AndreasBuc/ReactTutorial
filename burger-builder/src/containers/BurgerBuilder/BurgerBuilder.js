@@ -106,6 +106,7 @@ class BurgerBuilder extends React.PureComponent {
               ingredients={this.state.ingredients}
               cancel={this.purchaseCancelHandler}
               continue={this.purchaseContinuelHandler}
+              totalPrice={this.state.totalPrice}
             ></OrderSummery>
         </Modal>
         <Burger ingredients = {this.state.ingredients}/>
