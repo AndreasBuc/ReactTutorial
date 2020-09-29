@@ -81,6 +81,14 @@ class BurgerBuilder extends React.PureComponent {
     this.setState({purchasing: true});
   }
 
+  purchaseCancelHandler = () => {
+    this.setState({purchasing: false});
+  }
+
+  purchaseContinuelHandler = () => {
+    alert('You continue');
+  }
+
   render() {
     const disableInfo = {
       ...this.state.ingredients
@@ -90,8 +98,15 @@ class BurgerBuilder extends React.PureComponent {
     }
     return (
       <Aux>
-        <Modal show={this.state.purchasing}>
-          <OrderSummery ingredients={this.state.ingredients}></OrderSummery>
+        <Modal
+          show={this.state.purchasing}
+          modalClosed={this.purchaseCancelHandler}
+          >
+          <OrderSummery
+              ingredients={this.state.ingredients}
+              cancel={this.purchaseCancelHandler}
+              continue={this.purchaseContinuelHandler}
+            ></OrderSummery>
         </Modal>
         <Burger ingredients = {this.state.ingredients}/>
         <BuildControls
