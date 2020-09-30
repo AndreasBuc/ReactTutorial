@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { PureComponent }  from 'react';
 import Aux from '../../hoc/auxiliary';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 import classes from './Layout.module.css';
 
-const layout = (props) => (
-  <Aux>
-    <Toolbar></Toolbar>
-    <SideDrawer></SideDrawer>
-    <main className={classes.Content}>
-      {props.children}
-    </main>
-  </Aux>
-)
+class Layout extends PureComponent {
 
-export default layout;
+  state = {
+    showSideDrawer: true,
+  }
+
+  sideDrawerClosedHandler = () => {
+    this.setState({showSideDrawer: false})
+  }
+
+  render() {
+    return (
+      <Aux>
+        <Toolbar></Toolbar>
+        <SideDrawer open={this.state.showSideDrawer} closed={this.sideDrawerClosedHandler}></SideDrawer>
+        <main className={classes.Content}>
+          {this.props.children}
+        </main>
+      </Aux>
+    )
+  }
+}
+
+
+export default Layout;
