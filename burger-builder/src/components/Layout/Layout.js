@@ -5,26 +5,33 @@ import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 import classes from './Layout.module.css';
 
 class Layout extends PureComponent {
+    state = {
+        showSideDrawer: false
+    }
 
-  state = {
-    showSideDrawer: true,
-  }
+    sideDrawerClosedHandler = () => {
+        this.setState( { showSideDrawer: false } );
+    }
 
-  sideDrawerClosedHandler = () => {
-    this.setState({showSideDrawer: false})
-  }
+    sideDrawerToggleHandler = () => {
+        this.setState( ( prevState ) => {
+            return { showSideDrawer: !prevState.showSideDrawer };
+        } );
+    }
 
-  render() {
-    return (
-      <Aux>
-        <Toolbar></Toolbar>
-        <SideDrawer open={this.state.showSideDrawer} closed={this.sideDrawerClosedHandler}></SideDrawer>
-        <main className={classes.Content}>
-          {this.props.children}
-        </main>
-      </Aux>
-    )
-  }
+    render () {
+        return (
+            <Aux>
+                <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
+                <SideDrawer
+                    open={this.state.showSideDrawer}
+                    closed={this.sideDrawerClosedHandler} />
+                <main className={classes.Content}>
+                    {this.props.children}
+                </main>
+            </Aux>
+        )
+    }
 }
 
 
