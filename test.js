@@ -1,3 +1,8 @@
-arr = [1,2,3,5];
+let x = {name:'Peter'}
+console.log();
 
-console.log(arr.reduce((acc, cur) => acc + cur));
+if(Object.keys(x).length === 0) {
+  console.log('x is not');
+} else {
+  console.log('x is ')
+}
